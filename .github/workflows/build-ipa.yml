@@ -1,0 +1,101 @@
+name: 竞价选股池 iOS 云端编译（未签名 IPA）
+
+# Windows 上没有 Xcode，iOS 包不能本机编译。
+# 这里用 GitHub 免费的 macOS runner（macos-15 + Xcode）编译真机 arm64 包，
+# 产出未签名 IPA：下到 Windows 后用 Sideloadly + 免费 Apple ID 重签安装。
+#
+# 源码从打包 zip 取（首次运行后会把源码回填进本仓库，之后仓库即自带完整工程）。
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-unsigned:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 选择 Xcode
+        run: |
+          sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+          xcodebuild -version
+
+      - name: 取工程源码
+        run: |
+          curl -fL --retry 3 --retry-delay 5 --max-time 120 \
+            -o "$RUNNER_TEMP/xgc-src.zip" \
+            "https://aka.doubaocdn.com/s/AhGspuyj8T"
+          unzip -q -o "$RUNNER_TEMP/xgc-src.zip" -d "$GITHUB_WORKSPACE"
+          ls -la
+          test -f scripts/build_unsigned_ipa.sh
+          test -f ios/XuanGuChi/www/index.html
+
+      - name: 重建图标与工程
+        run: |
+          python3 scripts/gen_ios_icon.py
+          python3 scripts/gen_ios_project.py
+
+      - name: 编译并打包未签名 IPA
+        id: build
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          chmod +x scripts/build_unsigned_ipa.sh
+          ./scripts/build_unsigned_ipa.sh 2>&1 | tee build.log
+
+      - name: 编译失败时把日志推到 ci-log 分支
+        if: always()
+        run: |
+          {
+            echo "=== error 行 ==="
+            grep -n -i "error:" build.log | head -n 250 || true
+            echo "=== 末尾 250 行 ==="
+            tail -n 250 build.log || true
+          } > ci-log.txt
+          head -c 900000 ci-log.txt > ci-log-trim.txt
+          git config user.name "ci-bot"
+          git config user.email "ci-bot@users.noreply.github.com"
+          git checkout -B ci-log
+          git add -f ci-log-trim.txt
+          git commit -m "编译日志 $(date -u +%Y%m%d-%H%M%S)" || true
+          git push -f origin ci-log
+
+      - name: 上传 IPA 产物
+        if: steps.build.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: XuanGuChi-unsigned-ipa
+          path: ios/build/export/XuanGuChi-unsigned.ipa
+          if-no-files-found: error
+
+      - name: 发布到 Release
+        if: steps.build.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="ipa-$(date -u +%Y%m%d-%H%M%S)"
+          gh release create "$TAG" ios/build/export/XuanGuChi-unsigned.ipa \
+            --title "竞价选股池 iOS 未签名 IPA $TAG" \
+            --notes "GitHub Actions macos-15 云端编译，未签名；用 Sideloadly + 免费 Apple ID 重签后安装到 iPhone。"
+
+      - name: 把工程源码回填进仓库
+        if: always()
+        run: |
+          git checkout main || git checkout -B main
+          git config user.name "ci-bot"
+          git config user.email "ci-bot@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "仓库已含完整源码，无需回填"
+          else
+            git commit -m "回填 iOS 工程源码 [skip ci]"
+            git push origin HEAD:main
+          fi
+
+      - name: 编译失败则中断
+        if: steps.build.outcome != 'success'
+        run: exit 1
