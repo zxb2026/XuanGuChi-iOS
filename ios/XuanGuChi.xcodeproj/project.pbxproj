@@ -1,0 +1,261 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DBE2DDFE03FA85584286E0D1 /* WebSchemeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4F2EC00756103314D38BB2 /* WebSchemeHandler.swift */; };
+		4F18835546FD76A29594FB1A /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F68D4F860237F34121AB4E /* WebViewController.swift */; };
+		D339C3546FE2B2BF0F808598 /* XuanGuChiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D417790DA8CC56121AB989F /* XuanGuChiApp.swift */; };
+		E33F77581FE8A93621DDBDE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B04B2273026590A440D27C9 /* Assets.xcassets */; };
+		4E8805EA6C4AF17449F98198 /* www in Resources */ = {isa = PBXBuildFile; fileRef = F3EAA33C3B0DD58D2683F038 /* www */; };
+		C935B7A68B2FD92AB82CFDBB /* XuanGuChi.app in Products */ = {isa = PBXBuildFile; fileRef = B7C1D2E3F4A50000000000A2 /* XuanGuChi.app */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BA4F2EC00756103314D38BB2 /* WebSchemeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSchemeHandler.swift; sourceTree = "<group>"; };
+		C0F68D4F860237F34121AB4E /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		0D417790DA8CC56121AB989F /* XuanGuChiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XuanGuChiApp.swift; sourceTree = "<group>"; };
+		1507F021100E808DBE2FAA00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B04B2273026590A440D27C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F3EAA33C3B0DD58D2683F038 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
+		B7C1D2E3F4A50000000000A2 /* XuanGuChi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XuanGuChi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B7C1D2E3F4A50000000000B3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B7C1D2E3F4A50000000000A4 = {
+			isa = PBXGroup;
+			children = (
+				B7C1D2E3F4A50000000000A5 /* XuanGuChi */,
+				B7C1D2E3F4A50000000000A6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B7C1D2E3F4A50000000000A5 /* XuanGuChi */ = {
+			isa = PBXGroup;
+			children = (
+				5B04B2273026590A440D27C9 /* Assets.xcassets */,
+				1507F021100E808DBE2FAA00 /* Info.plist */,
+				F3EAA33C3B0DD58D2683F038 /* www */,
+				BA4F2EC00756103314D38BB2 /* WebSchemeHandler.swift */,
+				C0F68D4F860237F34121AB4E /* WebViewController.swift */,
+				0D417790DA8CC56121AB989F /* XuanGuChiApp.swift */,
+			);
+			path = XuanGuChi;
+			sourceTree = "<group>";
+		};
+		B7C1D2E3F4A50000000000A6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B7C1D2E3F4A50000000000A2 /* XuanGuChi.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B7C1D2E3F4A50000000000A1 /* XuanGuChi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B7C1D2E3F4A50000000000C2 /* Build configuration list for PBXNativeTarget "XuanGuChi" */;
+			buildPhases = (
+				B7C1D2E3F4A50000000000B1 /* Sources */,
+				B7C1D2E3F4A50000000000B3 /* Frameworks */,
+				B7C1D2E3F4A50000000000B2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XuanGuChi;
+			productName = XuanGuChi;
+			productReference = B7C1D2E3F4A50000000000A2 /* XuanGuChi.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B7C1D2E3F4A50000000000A3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					B7C1D2E3F4A50000000000A1 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = B7C1D2E3F4A50000000000C1 /* Build configuration list for PBXProject "XuanGuChi" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = "zh-Hans";
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				"zh-Hans",
+			);
+			mainGroup = B7C1D2E3F4A50000000000A4;
+			productRefGroup = B7C1D2E3F4A50000000000A6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B7C1D2E3F4A50000000000A1 /* XuanGuChi */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B7C1D2E3F4A50000000000B2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E33F77581FE8A93621DDBDE3 /* Assets.xcassets in Resources */,
+				4E8805EA6C4AF17449F98198 /* www in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B7C1D2E3F4A50000000000B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBE2DDFE03FA85584286E0D1 /* WebSchemeHandler.swift in Sources */,
+				4F18835546FD76A29594FB1A /* WebViewController.swift in Sources */,
+				D339C3546FE2B2BF0F808598 /* XuanGuChiApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+
+		B7C1D2E3F4A50000000000C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 5.0;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1 $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+			};
+			name = Debug;
+		};
+
+		B7C1D2E3F4A50000000000C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 5.0;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+
+		B7C1D2E3F4A50000000000C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = XuanGuChi/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xuanguchi.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+			};
+			name = Debug;
+		};
+
+		B7C1D2E3F4A50000000000C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = XuanGuChi/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xuanguchi.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B7C1D2E3F4A50000000000C1 /* Build configuration list for PBXProject "XuanGuChi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B7C1D2E3F4A50000000000C3 /* Debug */,
+				B7C1D2E3F4A50000000000C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B7C1D2E3F4A50000000000C2 /* Build configuration list for PBXNativeTarget "XuanGuChi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B7C1D2E3F4A50000000000C5 /* Debug */,
+				B7C1D2E3F4A50000000000C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B7C1D2E3F4A50000000000A3 /* Project object */;
+}

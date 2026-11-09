@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>竞价选股池</title>
+<style>
+:root{
+  --bg:#12141a; --card:#1b1e27; --card2:#22252f; --line:#2c3040;
+  --txt:#e8eaf2; --sub:#8a92a8; --accent:#d43a3c; --accent2:#ffb4b2;
+  --up:#e63932; --down:#2eb872; --gold:#ffc857;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{background:var(--bg);color:var(--txt);font:14px/1.5 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;padding-bottom:64px}
+/* 顶栏 */
+#topbar{position:sticky;top:0;z-index:9;background:linear-gradient(180deg,#1e222c,#191c24);border-bottom:1px solid var(--line);padding:8px 14px 6px}
+#topbar h1{font-size:17px;color:var(--accent);letter-spacing:1px;display:flex;justify-content:space-between;align-items:center}
+#clock{font-size:11px;color:var(--sub)}
+#netstat{font-size:11px;margin-top:2px;color:var(--sub)}
+#netstat .ok{color:var(--down)} #netstat .warn{color:var(--gold)}
+/* 页签 */
+#tabs{display:flex;background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:52px;z-index:8}
+#tabs div{flex:1;text-align:center;padding:10px 0;color:var(--sub);font-size:14px;border-bottom:2px solid transparent}
+#tabs div.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.page{display:none;padding:10px 10px 160px}
+.page.on{display:block}
+/* 按钮 */
+.btn{display:inline-block;background:var(--accent);color:#fff;border:none;border-radius:8px;
+  padding:10px 22px;font-size:15px;font-weight:600}
+.btn:disabled{opacity:.45}
+.btn.ghost{background:var(--card2);color:var(--txt);border:1px solid var(--line)}
+.btn.sm{font-size:13px;padding:8px 16px}
+/* 状态条 */
+#status{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;
+  font-size:12px;color:var(--sub);margin-bottom:10px;line-height:1.7}
+#status b{color:var(--txt)}
+.bar{height:4px;background:var(--line);border-radius:2px;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;background:var(--accent);width:0%;transition:width .3s}
+/* 漏斗卡 */
+.funnel{margin-top:10px}
+.fcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px;margin-bottom:8px}
+.fcard .tier{font-size:11px;color:var(--gold);border:1px solid var(--gold);border-radius:6px;
+  padding:1px 8px;display:inline-block;margin-bottom:6px}
+.fcard .nm{font-size:16px;font-weight:700}
+.fcard .cd{color:var(--sub);font-size:12px;margin-left:8px}
+.fcard .sc{float:right;color:var(--accent);font-size:18px;font-weight:700}
+.fcard .hits{font-size:11px;color:var(--sub);margin-top:6px;line-height:1.7}
+.up{color:var(--up)} .down{color:var(--down)}
+/* 表格 */
+.tbl{width:100%;border-collapse:collapse;font-size:12px;background:var(--card);border-radius:10px;overflow:hidden}
+.tbl th{background:var(--card2);color:var(--sub);padding:8px 6px;text-align:right;font-weight:500;white-space:nowrap}
+.tbl td{padding:8px 6px;text-align:right;border-top:1px solid var(--line);white-space:nowrap}
+.tbl th:first-child,.tbl td:first-child{text-align:left}
+.tbl tr.act td{color:var(--gold)}
+.empty{color:var(--sub);text-align:center;padding:40px 0;font-size:13px}
+/* 折叠区块 */
+.section{border:1px solid var(--line);border-radius:12px;margin-bottom:8px;overflow:hidden;background:var(--card)}
+.section>.head{display:flex;justify-content:space-between;align-items:center;padding:11px 12px;cursor:pointer;user-select:none}
+.section>.head:active{background:var(--card2)}
+.section>.head .ttl{font-size:14px;font-weight:600}
+.section>.head .tg{color:var(--sub);font-size:13px;transition:transform .2s;font-weight:700}
+.section.collapsed>.body{display:none}
+.section.collapsed>.head .tg{transform:rotate(-90deg)}
+.about{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;font-size:12px;color:var(--sub);line-height:1.9}
+.about b{color:var(--txt)}
+.foot-fixed{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(180deg,rgba(18,20,26,0),var(--bg) 30%);padding:8px 14px;display:flex;gap:10px}
+.foot-fixed .btn{flex:1;text-align:center}
+#toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#000c;color:#fff;
+  padding:10px 18px;border-radius:20px;font-size:13px;z-index:99;display:none}
+</style>
+</head>
+<body>
+
+<div id="topbar">
+  <h1>竞价选股池 <span id="clock">--:--:--</span></h1>
+  <div id="netstat">数据源检测中…</div>
+</div>
+
+<div id="tabs">
+  <div class="on" data-p="p_screen">盘前初选</div>
+  <div data-p="p_watch">自选池</div>
+  <div data-p="p_about">说明</div>
+</div>
+
+<div class="page on" id="p_screen">
+  <div id="status">
+    点击下方按钮开始（建议交易日 <b>09:26~09:30</b> 之间运行，竞价结果已定型）。<br>
+    规则：沪深A股+创业板 · 股价2~15 · 竞价涨幅&lt;6.8% · 自动过滤 ST/停牌/退市/一字板/多元金融。
+    <div id="status_msg"></div>
+    <div class="bar"><i id="prog"></i></div>
+  </div>
+  <div id="result"></div>
+</div>
+
+<div class="page" id="p_watch">
+  <div id="watch_status" style="font-size:12px;color:var(--sub);padding:4px 2px 10px">自选池（Top1 自动入库）</div>
+  <div id="watch_body" class="empty">暂无入选</div>
+</div>
+
+<div class="page" id="p_about">
+  <div class="about">
+    <b>竞价选股池 · iOS 版 v1.0.0</b><br>
+    独立原生应用，选股逻辑全部内置，仅行情数据需联网（东方财富公开接口）。<br><br>
+    <b>选股规则（与桌面版同口径）</b><br>
+    · 宇宙：沪深A股 + 创业板<br>
+    · 股价 2~15 元；竞价涨幅 &lt;6.8%<br>
+    · 过滤：ST/*ST/退市/停牌/一字板/多元金融<br>
+    · 技术信号：MA20 / 均线多头 / MACD / 量能趋势 / RSI 等（K线 60 日实时计算）<br>
+    · 打分：桌面版校准权重同源内嵌<br>
+    · 三层漏斗：Top5 → Top3 → Top1 自动入自选池<br><br>
+    <b>使用建议</b><br>
+    交易日 09:26 后打开点「开始选股」；完成后每 30 秒自动刷新行情，当日锁定不再出新票。<br><br>
+    <b>风险提示</b><br>
+    历史回测不代表未来收益，本工具仅作研究参考，不构成投资建议。
+  </div>
+  <div class="about" style="margin-top:10px">
+    <b>本地自学习（在线训练）</b><br>
+    <button class="btn sm" id="btn_train" style="margin:10px 0">立即训练（挖样本+校准）</button>
+    手机端自动挖掘历史样本并用 log-odds 校准权重，逐步逼近桌面口径；校准后自动覆盖内嵌默认权重。<br>
+    <span id="train_stat">—</span><br>
+    <div style="font-size:11px;color:var(--sub);margin-top:8px;line-height:1.7">注：训练需联网拉取活跃股历史K线（约数十秒）。通达信逐笔竞价为 TCP 协议手机无法直连，竞价量能历史以东方财富快照近似。</div>
+  </div>
+</div>
+
+<div class="foot-fixed">
+  <button class="btn" id="btn_run">开始选股</button>
+  <button class="btn ghost" id="btn_refresh">刷新行情</button>
+</div>
+<div id="toast"></div>
+
+<script>
+"use strict";
+/* ================= 基础设施 ================= */
+const PROXY = "xgc://local/__proxy?url=";
+async function jget(url){
+  try{
+    const r = await fetch(PROXY + encodeURIComponent(url), {cache:"no-store"});
+    if(!r.ok) throw new Error("HTTP "+r.status);
+    return await r.json();
+  }catch(e){
+    throw new Error("["+(e&&e.message||e)+"] "+(url||"").slice(0,90));
+  }
+}
+function toast(m){ const t=document.getElementById("toast"); t.textContent=m; t.style.display="block";
+  clearTimeout(t._h); t._h=setTimeout(()=>t.style.display="none", 2200); }
+function fmt(n, d=2){ return (n===null||n===undefined||isNaN(n))?"-":Number(n).toFixed(d); }
+function pctColor(v){ return v>0?"up":(v<0?"down":""); }
+const z6 = c => String(c).padStart(6,"0");
+const secid = c => (c[0]==="6"||c[0]==="9" ? "1." : "0.") + z6(c);
+
+setInterval(()=>{ const d=new Date();
+  document.getElementById("clock").textContent =
+    d.toLocaleDateString("zh-CN")+" 周"+"日一二三四五六"[d.getDay()]+" "+
+    d.toTimeString().slice(0,8); }, 1000);
+
+/* 页签 */
+document.querySelectorAll("#tabs div").forEach(t=>t.onclick=()=>{
+  document.querySelectorAll("#tabs div").forEach(x=>x.classList.remove("on"));
+  document.querySelectorAll(".page").forEach(x=>x.classList.remove("on"));
+  t.classList.add("on");
+  document.getElementById(t.dataset.p).classList.add("on");
+  if(t.dataset.p==="p_watch") renderWatch();
+});
+
+/* ================= 宇宙规则（与桌面版 universe.py 同口径） ================= */
+const FIN_WORDS = ["金融","银行","保险","证券","信托","期货","小贷","典当","租赁","消费金融","融资","担保","AMC","资产管理"];
+function isFinancial(name){ return FIN_WORDS.some(w=>name.includes(w)); }
+function isST(name){ return name.includes("ST") || name.includes("退") || /\*ST/.test(name); }
+function boardOf(code){
+  if(code.length!==6) return null;
+  if(/^68/.test(code)) return null;                 // 科创板排除（必须先于 /^6/：688 以 6 开头）
+  if(/^6/.test(code)) return "主板";                 // 沪主板 60x
+  if(/^00/.test(code)) return "主板";               // 深主板
+  if(/^30/.test(code)) return "创业板";             // 创业板
+  if(/^8|^4|^9/.test(code)) return null;            // 北交所/B股排除
+  return null;
+}
+function applyUniverse(rows){
+  const stats = {total:rows.length, kept:0, drop:{}};
+  const drop = k => { stats.drop[k]=(stats.drop[k]||0)+1; };
+  const out = [];
+  for(const r of rows){
+    const code = r.f12, name = r.f14 || "";
+    if(!boardOf(code)){ drop("非沪深主板/创业板"); continue; }
+    if(isST(name)){ drop("ST/退市"); continue; }
+    if(isFinancial(name)){ drop("多元金融"); continue; }
+    if(r.f2===undefined||r.f2===null||r.f2==="-"){ drop("停牌/无行情"); continue; }
+    const px = Number(r.f2);
+    if(!(px>=2 && px<15)){ drop("股价越界2~15"); continue; }
+    const chg = r.f3===undefined||r.f3==="-" ? null : Number(r.f3);
+    if(chg===null){ drop("无涨跌幅"); continue; }
+    // 一字板：今开=最高=最低≈昨收 且涨停
+    const o=Number(r.f17), h=Number(r.f15), l=Number(r.f16), pc=Number(r.f18);
+    if(o>0&&h>0&&l>0&&Math.abs(h-l)<1e-9&&Math.abs(h-pc)/pc*100>=9.5){ drop("一字板"); continue; }
+    if(chg>=6.8){ drop("竞价涨幅≥6.8%"); continue; }
+    out.push({code, name, px, chg, open:o, pc, vol:r.f5, amt:r.f6,
+              tr:r.f8, vr:r.f10, mv:r.f21, main_in:r.f62});
+  }
+  stats.kept = out.length;
+  return {out, stats};
+}
+
+/* ================= 技术信号（与桌面版 screener/calibration 同口径） ================= */
+const WEIGHTS = {  // 桌面版 config/weights.json 校准结果内嵌（2026-11-06 与最新 weights.json 逐项核对一致，样本 1576赢/440对）
+  "站上MA20":0.658,"MA多头排列":2.0,"MACD红柱":0.727,"MACD近期金叉(≤10日)":0.5,
+  "量能趋势向上(≥1.1)":0.668,"近5日强势或超跌反转":0.666,"RSI未极端超买(<85)":0.5,
+  "近20日高点附近或深度超跌":0.5,"开盘在区间[-8%,+6.8%]":0.5 };
+function ma(arr,n,i=arr.length-1){ if(i+1<n) return null;
+  let s=0; for(let k=i-n+1;k<=i;k++) s+=arr[k]; return s/n; }
+function ema(arr,n){ const k=2/(n+1), out=[]; let e=arr[0];
+  for(const v of arr){ e=v*k+e*(1-k); out.push(e); } return out; }
+function rsi(closes,n=14){ if(closes.length<n+1) return null;
+  let g=0,l=0; for(let i=closes.length-n;i<closes.length;i++){
+    const d=closes[i]-closes[i-1]; if(d>0)g+=d; else l-=d; }
+  if(l===0) return 100; const rs=(g/n)/(l/n); return 100-100/(1+rs); }
+function techSignals(k){  // k: {c:[close], v:[vol], open:今开, pc:昨收}
+  const c=k.c, v=k.v, n=c.length, hits=[], misses=[];
+  const sig=(name,cond)=>cond?hits.push(name):misses.push(name);
+  const ma20=ma(c,20), ma5=ma(c,5), ma10=ma(c,10), ma30=ma(c,30);
+  sig("站上MA20", ma20!==null && c[n-1]>ma20);
+  sig("MA多头排列", [ma5,ma10,ma20,ma30].every(x=>x!==null) && ma5>ma10&&ma10>ma20&&ma20>ma30);
+  if(n>=35){
+    const e12=ema(c,12), e26=ema(c,26);
+    const dif=e12.map((x,i)=>x-e26[i]);
+    const dea=ema(dif,9);
+    const hist=dif.map((x,i)=>x-dea[i]);
+    sig("MACD红柱", hist[n-1]>0);
+    let gc=-1; for(let i=n-1;i>=Math.max(1,n-10);i--)
+      if(dif[i]>dea[i]&&dif[i-1]<=dea[i-1]){ gc=i; break; }
+    sig("MACD近期金叉(≤10日)", gc>0);
+  } else { misses.push("MACD红柱"); misses.push("MACD近期金叉(≤10日)"); }
+  const v5=ma(v,5), v20=ma(v,20);
+  sig("量能趋势向上(≥1.1)", v5!==null&&v20!==null&&v20>0&&v5/v20>=1.1);
+  if(n>=6){ const r5=c[n-1]/c[n-6]-1;
+    sig("近5日强势或超跌反转", r5>=0.06||r5<=-0.12); } else misses.push("近5日强势或超跌反转");
+  const rr=rsi(c); sig("RSI未极端超买(<85)", rr===null?false:rr<85);
+  if(n>=21){ const hi=Math.max(...c.slice(-20));
+    sig("近20日高点附近或深度超跌", c[n-1]>=0.95*hi||c[n-1]<=0.82*hi); }
+  else misses.push("近20日高点附近或深度超跌");
+  const openPct=k.pc>0?(k.open/k.pc-1)*100:null;
+  sig("开盘在区间[-8%,+6.8%]", openPct!==null&&openPct>=-8&&openPct<6.8);
+  return {hits, misses};
+}
+/* 竞价快照信号（桌面版竞价分桶校准结论） */
+function auctionScore(r){
+  let s=0; const hits=[];
+  const vr=r.vr;
+  if(vr!==undefined&&vr!==null&&vr!=="-"){ const v=Number(vr);
+    if(v>=0.5&&v<=2){ s+=1.4; hits.push("竞价温和放量"); }
+    else if(v>2&&v<=4){ s+=1.0; hits.push("竞价放量"); }
+    else if(v>8){ s-=0.8; hits.push("⚠竞价巨量(出货嫌疑)"); } }
+  const g=r.chg;
+  if(g>=2&&g<5){ s+=0.8; hits.push("竞价强势2~5%"); }
+  else if(g>=0&&g<2){ s+=0.3; hits.push("竞价温和"); }
+  else if(g>=-8&&g<0){ s+=0.4; hits.push("超跌反转候选"); }
+  const amt=r.amt?Number(r.amt):0;
+  if(amt>=3e8){ s+=0.3; hits.push("竞价成交活跃"); }
+  return {s, hits};
+}
+/* 出货软过滤（桌面版 dump_detector 移动版简化：主力资金大幅流出） */
+function dumpFlag(r){
+  if(r.main_in!==undefined&&r.main_in!==null&&r.main_in!=="-"&&r.mv){
+    const outpct = Number(r.main_in)/Number(r.mv)*100;  // fltt=2 下 f62/f21 均为元，占比%=净流入/流通市值*100
+    if(outpct<=-6) return "主力净流出"+fmt(outpct,1)+"%";
+  }
+  return null;
+}
+
+/* ================= 行情数据 ================= */
+const CLIST = "https://push2.eastmoney.com/api/qt/clist/get";
+const PZ = 100;   // 东财 clist 每页实测上限 100 条
+function clistUrl(pn){
+  return CLIST+"?pn="+pn+"&pz="+PZ+"&po=1&np=1&fltt=2&invt=2&fid=f12&fs="+
+    encodeURIComponent("m:0+t:6,m:0+t:80,m:1+t:2")+
+    "&fields=f2,f3,f5,f6,f8,f10,f12,f14,f15,f16,f17,f18,f20,f21,f62";
+}
+async function fetchUniverse(onProg){
+  const first = await jget(clistUrl(1));
+  const d0 = first.data; if(!d0) throw new Error("东财接口无数据");
+  const total = d0.total, rows = [...(d0.diff||[])];
+  const pages = Math.ceil(total/PZ);
+  const plist = []; for(let p=2;p<=pages;p++) plist.push(p);
+  let done=1;
+  await pool(plist, async p=>{
+    try{ const j=await jget(clistUrl(p));
+      if(j.data&&j.data.diff) rows.push(...j.data.diff); }catch(e){}
+    done++; onProg(Math.min(99, Math.round(done/pages*100)), "拉取全市场快照 "+done+"/"+pages);
+  }, 4);
+  onProg(100, "全市场快照 "+rows.length+"/"+total+" 条");
+  return rows;
+}
+function klineUrl(code, lmt=70){
+  return "https://push2his.eastmoney.com/api/qt/stock/kline/get?secid="+secid(code)+
+    "&klt=101&fqt=1&lmt="+lmt+"&end=20500101&fields1=f1,f2,f3&fields2=f51,f52,f53,f54,f55,f56,f57,f58";
+}
+async function fetchKline(code, lmt=70){
+  const j = await jget(klineUrl(code, lmt));
+  const kl = j.data&&j.data.klines; if(!kl||!kl.length) return null;
+  const c=[],v=[],o=[],d=[]; let last=null;
+  for(const s of kl){ const a=s.split(","); c.push(Number(a[2])); v.push(Number(a[5]));
+    o.push(Number(a[1])); d.push(a[0]); last=a; }
+  return {c,v,o,d,open:Number(last[1]),pc:c[c.length-2]||Number(last[1])};
+}
+async function pool(items, worker, size=6){
+  const out=[]; let i=0;
+  await Promise.all(Array.from({length:Math.min(size,items.length)},async()=>{
+    while(i<items.length){ const idx=i++; out[idx]=await worker(items[idx], idx).catch(()=>null); }
+  }));
+  return out;
+}
+const ULIST = "https://push2.eastmoney.com/api/qt/ulist.np/get";
+async function refreshQuotes(codes){
+  const secids = codes.map(secid).join(",");
+  const url = ULIST+"?secids="+secids+"&fltt=2&invt=2&fields=f2,f3,f12,f14,f17,f15,f16,f18";
+  const j = await jget(url);
+  const map={};
+  if(j.data&&j.data.diff) for(const d of j.data.diff) map[z6(d.f12)]=d;
+  return map;
+}
+
+/* ================= 主流程 ================= */
+let running=false, doneRows=[], doneDate=null, lastStats=null;
+function setProg(p, msg){
+  const bar=document.getElementById("prog"); if(bar) bar.style.width=p+"%";
+  if(msg){ const m=document.getElementById("status_msg"); if(m) m.textContent=msg; }
+}
+async function runScreen(){
+  if(running) return; running=true;
+  const btn=document.getElementById("btn_run"); btn.disabled=true;
+  const t0=Date.now();
+  try{
+    setProg(3,"连通数据源…");
+    await jget("https://push2.eastmoney.com/api/qt/clist/get?pn=1&pz=1&po=1&np=1&fltt=2&invt=2&fid=f12&fs=m:1+t:2&fields=f12");
+    setProg(6,"拉取全市场快照…");
+    const raw = await fetchUniverse(p=>setProg(6+p*0.34));
+    const {out:uni, stats} = applyUniverse(raw);
+    setProg(42,"宇宙过滤完成 "+stats.kept+"/"+stats.total+" → 预筛中…");
+    // 预筛：快照分排序取前 160 进 K线阶段
+    uni.forEach(r=>{ r.prescore = auctionScore(r).s + (r.tr&&Number(r.tr)>=3?0.4:0)
+      + (r.mv&&Number(r.mv)>=2e8&&Number(r.mv)<=2e9?0.4:0) - (dumpFlag(r)?1.5:0); });
+    uni.sort((a,b)=>b.prescore-a.prescore);
+    const cands = uni.slice(0,160);
+    let cnt=0;
+    const kls = await pool(cands, async r=>{
+      const k=await fetchKline(r.code,160);
+      cnt++; if(cnt%10===0) setProg(42+Math.round(cnt/cands.length*38),
+        "K线技术信号 "+cnt+"/"+cands.length+"（并发6）");
+      return k;
+    },6);
+    setProg(82,"打分与三层漏斗…");
+    const W=getWeights();                 // 优先本地校准权重，否则内嵌默认
+    const scored=[];
+    cands.forEach((r,i)=>{
+      const k=kls[i]; if(!k) return;
+      const t=techSignals({c:k.c,v:k.v,open:r.open,pc:r.pc});
+      const a=auctionScore(r);
+      const dump=dumpFlag(r);
+      if(dump) return;                    // 出货股直接排除
+      let tech=0; t.hits.forEach(h=>tech+=(W[h]||0.5));
+      scored.push({...r, tech, auc:a.s, hits:[...a.hits,...t.hits],
+                   misses:t.misses, score:Math.round((tech+a.s)*100)/100});
+    });
+    scored.sort((a,b)=>b.score-a.score);
+    doneRows = scored;
+    doneDate = new Date().toLocaleDateString("zh-CN");
+    lastStats = stats;
+    setProg(100,"完成，耗时 "+Math.round((Date.now()-t0)/1000)+"s");
+    renderResult(scored, stats);
+    // 自动训练：复用已拉 K 线增量挖样本 + 校准（不新增网络请求）
+    try{
+      const mined = cands.map((r,i)=>({code:r.code, k:kls[i]})).filter(x=>x.k);
+      const mr = mineFromKlines(mined);
+      if(getTrain().samples.length>=30) calibrateTrain();
+      updateTrainStat();
+      if(mr.added>0) console.log("auto-mine +"+mr.added+" -> samples="+mr.total);
+    }catch(e){}
+    // Top1 自动入自选池
+    if(scored.length){ addToWatch(scored[0]); toast("★ Top1 "+scored[0].code+" "+scored[0].name+" 已入自选池"); }
+    startAutoRefresh();
+  }catch(e){
+    const stack = (e && e.stack ? e.stack.split("\n").slice(0,3).join(" ") : "");
+    document.getElementById("status").innerHTML = "✗ 选股失败："+(e&&e.message||e)+
+      (stack? "<br><span style='font-size:11px;color:#ffcf66'>"+stack.replace(/</g,"&lt;").slice(0,180)+"</span>":"")+
+      "<br>请检查手机网络后重试（所有行情来自东方财富公开接口）";
+  }
+  btn.disabled=false; running=false;
+}
+function toggleSec(id){ const s=document.getElementById(id); if(s) s.classList.toggle("collapsed"); }
+function cardHtml(r, rank){
+  return '<div class="fcard"><span class="sc">'+r.score+'</span>'+
+    '<span class="nm">#'+rank+' '+r.name+'</span>'+
+    '<span class="cd">'+r.code+' <span class="'+pctColor(r.chg)+'">'+fmt(r.chg)+
+    '%</span> · ¥'+fmt(r.px)+'</span>'+
+    '<div class="hits">'+r.hits.slice(0,6).join(" · ")+"</div></div>";
+}
+/* 动态通过线：与桌面 screener.top_n_cutoff 同口径（按当日候选分数取 Top10%）。
+   scored 须已按 score 降序。刻意用 floor(n*0.1+0.999) 而非 Math.ceil，
+   避免 Math.ceil(100*0.1)=11 这类浮点进位误差。 */
+function dynCutoff(scored){
+  if(!scored.length) return null;
+  const k=Math.max(1, Math.floor(scored.length*0.1+0.999));
+  return scored[Math.min(k,scored.length)-1].score;
+}
+function renderResult(scored, stats){
+  const el=document.getElementById("result");
+  const dtable = stats.drop||{};
+  const drops = Object.entries(dtable).map(([k,v])=>k+" "+v).join(" · ");
+  const cutoff=dynCutoff(scored);
+  const passed = cutoff===null ? [] : scored.filter(r=>r.score>=cutoff);
+  let h='<div id="status_res" style="margin-bottom:10px">宇宙 <b>'+stats.kept+"</b>/"+stats.total+
+    " → 通过 <b>"+passed.length+"</b> 只（动态Top10% 线 "+(cutoff===null?"-":cutoff)+"）"+
+    (drops?"<br>剔除: "+drops:"")+
+    "<br>已生成 4 个可折叠窗口（前1 / 前3 / 前5 / 全部候选），点标题可收起 · 每30秒自动刷新</div>";
+  const mkSec=(id,title,rows)=>{
+    let b='<div class="body" style="padding:10px 12px 12px">';
+    if(rows.length) rows.forEach((r,i)=>b+=cardHtml(r,i+1));
+    else b+='<div class="empty" style="padding:18px 0">暂无</div>';
+    b+='</div>';
+    return '<div class="section" id="'+id+'"><div class="head" onclick="toggleSec(\''+id+'\')">'+
+      '<span class="ttl">'+title+'</span><span class="tg">▾</span></div>'+b+'</div>';
+  };
+  h+=mkSec("sec_top1","排序前1",scored.slice(0,1));
+  h+=mkSec("sec_top3","排序前3（"+Math.min(3,scored.length)+"）",scored.slice(0,3));
+  h+=mkSec("sec_top5","排序前5（"+Math.min(5,scored.length)+"）",scored.slice(0,5));
+  if(passed.length>5){
+    let t='<div class="body" style="padding:0 12px 12px"><table class="tbl"><tr><th>代码/名称</th><th>得分</th><th>现价</th><th>涨幅%</th></tr>';
+    passed.slice(5).forEach(r=>{ t+='<tr><td>'+r.code+" "+r.name+'</td><td>'+r.score+'</td><td>'+fmt(r.px)+
+      '</td><td class="'+pctColor(r.chg)+'">'+fmt(r.chg)+"</td></tr>"; });
+    t+="</table></div>";
+    h+='<div class="section collapsed" id="sec_all"><div class="head" onclick="toggleSec(\'sec_all\')">'+
+       '<span class="ttl">全部通过候选（'+(passed.length-5)+'）</span><span class="tg">▾</span></div>'+t+'</div>';
+  }
+  if(!scored.length) h='<div class="empty">今日无通过候选</div>';
+  el.innerHTML=h;
+}
+
+/* ================= 在线训练（手机端自学习，对齐桌面 sample_miner / calibration） ================= */
+/* 说明：通达信逐笔竞价(mootdx, TCP) 手机端无法直连，竞价量能历史用东财快照近似；
+   样本挖掘与权重校准用东财历史 K 线完整复现桌面口径。 */
+const TRAIN_KEY = "xgc_train";
+const SIG_NAMES = Object.keys(WEIGHTS);          // 9 个技术信号名（与校准/打分一致）
+function getTrain(){
+  let t=null; try{ t=JSON.parse(localStorage.getItem(TRAIN_KEY)||"null"); }catch(e){}
+  if(!t||typeof t!=="object") t={samples:[],weights:{},calibratedDate:null};
+  if(!Array.isArray(t.samples)) t.samples=[];
+  if(!t.weights||typeof t.weights!=="object") t.weights={};
+  return t;
+}
+function saveTrain(t){ try{ localStorage.setItem(TRAIN_KEY, JSON.stringify(t)); }catch(e){} }
+function sigBits(hits){ let b=0; SIG_NAMES.forEach((nm,idx)=>{ if(hits.indexOf(nm)>=0) b|=(1<<idx); }); return b; }
+
+/* 挖样本：对齐桌面 sample_miner —— open_to_close_ret>8% 记赢家；盘前技术特征（截至前一日K线） */
+async function mineSamples(codes, onProg){
+  const t=getTrain();
+  const have=new Set(t.samples.map(s=>s.k));
+  const windowDays=45, lmt=160;
+  let cnt=0, winAdded=0;
+  const ctrlPool=[];
+  for(let ci=0; ci<codes.length; ci++){
+    const code=codes[ci];
+    try{
+      const k=await fetchKline(code, lmt);
+      if(!k||!k.c||k.c.length<25) continue;
+      const n=k.c.length, start=Math.max(20, n-windowDays);
+      for(let i=start; i<n; i++){
+        const op=k.o[i], cl=k.c[i];
+        if(!(op>0)) continue;
+        const ret=(cl/op-1)*100;
+        const key=code+"_"+(k.d[i]||("i"+i));
+        if(have.has(key)) continue;
+        if(ret>8){
+          const feats=techSignals({c:k.c.slice(0,i), v:k.v.slice(0,i), open:op, pc:k.c[i-1]});
+          t.samples.push({k:key, s:sigBits(feats.hits), w:1}); have.add(key); winAdded++;
+        } else {
+          ctrlPool.push({key,i,op,cl,c:k.c,v:k.v,o:k.o,d:k.d});
+        }
+      }
+    }catch(e){}
+    cnt++;
+    if(onProg) onProg(Math.round(cnt/codes.length*100), "挖样本 "+cnt+"/"+codes.length+"（赢家"+winAdded+"）");
+  }
+  // 对照抽样（控制总量，避免 localStorage 膨胀）
+  for(let x=ctrlPool.length-1; x>0; x--){ const j=Math.floor(Math.random()*(x+1)); [ctrlPool[x],ctrlPool[j]]=[ctrlPool[j],ctrlPool[x]]; }
+  const ctrlWant=Math.min(ctrlPool.length, Math.max(60, winAdded*2));
+  for(let x=0; x<ctrlWant; x++){
+    const it=ctrlPool[x];
+    if(have.has(it.key)) continue;
+    const feats=techSignals({c:it.c.slice(0,it.i), v:it.v.slice(0,it.i), open:it.op, pc:it.c[it.i-1]});
+    t.samples.push({k:it.key, s:sigBits(feats.hits), w:0}); have.add(it.key);
+  }
+  if(t.samples.length>4000) t.samples=t.samples.slice(-4000);   // 5MB 上限保护
+  saveTrain(t);
+  return {total:t.samples.length, winners:t.samples.filter(s=>s.w===1).length, added:winAdded};
+}
+/* 增量挖样本：复用选股时已拉取的 K 线（不再发请求），挖掘其中的历史赢家日（不含当日，标签未知） */
+function mineFromKlines(list){
+  const t=getTrain(); const have=new Set(t.samples.map(s=>s.k));
+  let winAdded=0; const ctrlPool=[];
+  for(const it of list){
+    const code=it.code, k=it.k;
+    if(!k||!k.c||k.c.length<25) continue;
+    const n=k.c.length, start=Math.max(20, n-45);
+    for(let i=start; i<n-1; i++){            // 跳过最后一日（当日未收盘，标签未知）
+      const op=k.o[i], cl=k.c[i]; if(!(op>0)) continue;
+      const ret=(cl/op-1)*100; const key=code+"_"+(k.d[i]||("i"+i));
+      if(have.has(key)) continue;
+      if(ret>8){
+        const f=techSignals({c:k.c.slice(0,i), v:k.v.slice(0,i), open:op, pc:k.c[i-1]});
+        t.samples.push({k:key, s:sigBits(f.hits), w:1}); have.add(key); winAdded++;
+      } else ctrlPool.push({key,i,op,cl,c:k.c,v:k.v,o:k.o});
+    }
+  }
+  for(let x=ctrlPool.length-1; x>0; x--){ const j=Math.floor(Math.random()*(x+1)); [ctrlPool[x],ctrlPool[j]]=[ctrlPool[j],ctrlPool[x]]; }
+  const want=Math.min(ctrlPool.length, Math.max(40, winAdded*2));
+  for(let x=0; x<want; x++){
+    const it=ctrlPool[x]; if(have.has(it.key)) continue;
+    const f=techSignals({c:it.c.slice(0,it.i), v:it.v.slice(0,it.i), open:it.op, pc:it.c[it.i-1]});
+    t.samples.push({k:it.key, s:sigBits(f.hits), w:0}); have.add(it.key);
+  }
+  if(t.samples.length>4000) t.samples=t.samples.slice(-4000);
+  saveTrain(t);
+  return {total:t.samples.length, winners:t.samples.filter(s=>s.w===1).length, added:winAdded};
+}
+/* 校准：对齐 calibration.calibrate —— log2(P(信号|赢)/P(信号|对照))，归一化[0.5,3.0] */
+function calibrateTrain(){
+  const t=getTrain(); const S=t.samples;
+  if(!S||S.length<30) return null;
+  const win=S.filter(s=>s.w===1), con=S.filter(s=>s.w===0);
+  const nw=win.length, nc=con.length;
+  if(nw<5||nc<5) return null;
+  const weights={}; let mx=0;
+  SIG_NAMES.forEach((nm,idx)=>{
+    let wh=0, ch=0;
+    for(const s of win) if(s.s&(1<<idx)) wh++;
+    for(const s of con) if(s.s&(1<<idx)) ch++;
+    const pw=(wh+0.5)/(nw+1), pc=(ch+0.5)/(nc+1);
+    const w=Math.log2(pw/pc);
+    weights[nm]=w; if(w>mx) mx=w;
+  });
+  if(mx<=0) mx=1;
+  SIG_NAMES.forEach(nm=>{ weights[nm]=Math.round(Math.max(0.5, Math.min(3.0, weights[nm]/mx*2.0))*1000)/1000; });
+  t.weights=weights; t.calibratedDate=new Date().toLocaleDateString("zh-CN");
+  saveTrain(t);
+  return {weights, nw, nc, date:t.calibratedDate};
+}
+/* 权重：优先本地校准，否则内嵌默认 */
+function getWeights(){
+  const t=getTrain();
+  if(t&&t.weights&&Object.keys(t.weights).length===SIG_NAMES.length) return t.weights;
+  return WEIGHTS;
+}
+function updateTrainStat(){
+  const t=getTrain(), el=document.getElementById("train_stat");
+  if(!el) return;
+  const src=(t&&t.weights&&Object.keys(t.weights).length)?"本地校准("+t.calibratedDate+")":"内嵌默认";
+  el.textContent="样本 "+t.samples.length+" 条 · 权重来源："+src;
+}
+
+/* ================= 自选池（localStorage 持久化） ================= */
+function loadWatch(){ try{ return JSON.parse(localStorage.getItem("xgc_watch")||"[]"); }catch(e){ return []; } }
+function saveWatch(w){ localStorage.setItem("xgc_watch", JSON.stringify(w)); }
+function addToWatch(r){
+  const w=loadWatch();
+  const d=new Date().toLocaleDateString("zh-CN");
+  if(w.some(x=>x.code===r.code&&x.date===d)) return;
+  w.unshift({date:d, code:r.code, name:r.name, px:r.px, cur:r.px, mx:0, score:r.score});
+  saveWatch(w.slice(0,60));
+}
+function renderWatch(){
+  const w=loadWatch(), el=document.getElementById("watch_body");
+  document.getElementById("watch_status").textContent = "自选池（Top1 自动入库）· "+w.length+" 只";
+  if(!w.length){ el.className="empty"; el.textContent="暂无入选"; return; }
+  el.className="";
+  let h='<table class="tbl"><tr><th>入选日</th><th>代码/名称</th><th>入选价</th><th>现价</th><th>当前收益%</th><th>最大收益%</th></tr>';
+  w.forEach(r=>{
+    const ret=r.px?((r.cur/r.px-1)*100):0, mx=Math.max(r.mx||0,ret);
+    h+='<tr><td>'+r.date+'</td><td>'+r.code+" "+r.name+'</td><td>'+fmt(r.px)+
+      '</td><td>'+fmt(r.cur)+'</td><td class="'+pctColor(ret)+'">'+fmt(ret)+
+      '</td><td class="up">'+fmt(mx)+"</td></tr>";
+  });
+  el.innerHTML=h+"</table>";
+}
+
+/* ================= 选股完成后 30 秒自动刷新（不出新票） ================= */
+let refreshTimer=null;
+function startAutoRefresh(){
+  if(refreshTimer) clearInterval(refreshTimer);
+  refreshTimer=setInterval(async()=>{
+    if(!doneRows.length) return;
+    try{
+      const codes=doneRows.slice(0,50).map(r=>r.code);
+      const q=await refreshQuotes(codes);
+      for(const r of doneRows){ const d=q[r.code];
+        if(d&&d.f2!=="-"){ r.px=Number(d.f2); r.chg=Number(d.f3); } }
+      // 自选池行情刷新
+      const w=loadWatch();
+      if(w.length){
+        const q2=await refreshQuotes(w.map(x=>x.code));
+        for(const x of w){ const d=q2[x.code];
+          if(d&&d.f2!=="-"){ x.cur=Number(d.f2); const ret=(x.cur/x.px-1)*100;
+            x.mx=Math.max(x.mx||0,ret); } }
+        saveWatch(w);
+      }
+      renderResult(doneRows, lastStats);
+      renderWatch();
+    }catch(e){}
+  }, 30000);
+}
+
+/* ================= 数据源自检 ================= */
+(async()=>{
+  const ns=document.getElementById("netstat");
+  try{
+    const j=await jget("https://push2.eastmoney.com/api/qt/clist/get?pn=1&pz=1&po=1&np=1&fltt=2&invt=2&fid=f12&fs=m:1+t:2&fields=f12");
+    const total=j.data?j.data.total:0;
+    ns.innerHTML='<span class="ok">✓ 行情数据源连通</span> · 沪深A+创业板块共 '+total+" 只 · 东财公开接口";
+  }catch(e){
+    ns.innerHTML='<span class="warn">⚠ 数据源不可达：'+e.message+"（请检查网络/代理）</span>";
+  }
+})();
+
+document.getElementById("btn_run").onclick=runScreen;
+document.getElementById("btn_refresh").onclick=async()=>{
+  if(!doneRows.length){ toast("请先运行选股"); return; }
+  if(refreshTimer) clearInterval(refreshTimer);
+  startAutoRefresh(); toast("已刷新，并将持续每30秒自动刷新");
+};
+/* 立即训练：挖样本 + 校准（手机端自学习闭环） */
+document.getElementById("btn_train").onclick=async()=>{
+  const btn=document.getElementById("btn_train"); if(btn.disabled) return; btn.disabled=true;
+  try{
+    toast("训练：拉取全市场快照…");
+    const raw=await fetchUniverse(p=>toast("快照 "+p+"%"));
+    const {out:uni}=applyUniverse(raw);
+    uni.sort((a,b)=>Number(b.vol||0)-Number(a.vol||0));
+    const codes=uni.slice(0,40).map(r=>r.code);
+    const r1=await mineSamples(codes, (p,m)=>toast(m));
+    const r2=calibrateTrain();
+    updateTrainStat();
+    toast("训练完成：样本"+r1.total+" 赢家"+r1.winners+(r2?(" 权重已更新("+r2.date+")"):"（样本不足，未校准）"));
+  }catch(e){
+    toast("训练失败："+(e&&e.message||e));
+  }
+  btn.disabled=false;
+};
+updateTrainStat();
+</script>
+</body>
+</html>

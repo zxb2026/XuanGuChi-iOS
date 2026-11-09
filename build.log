@@ -1,0 +1,264 @@
+==> 0/4 预检：工程与资源
+==> 1/4 编译真机 arm64 版本（不签名）
+Command line invocation:
+    /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/xcodebuild -project /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/XuanGuChi.xcodeproj -scheme XuanGuChi -configuration Release -destination generic/platform=iOS -derivedDataPath /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY= clean build
+
+Build settings from command line:
+    CODE_SIGN_IDENTITY = 
+    CODE_SIGNING_ALLOWED = NO
+    CODE_SIGNING_REQUIRED = NO
+
+note: Using codesigning identity override: 
+ComputePackagePrebuildTargetDependencyGraph
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+** CLEAN SUCCEEDED **
+
+note: Using codesigning identity override: 
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (1 target)
+    Target 'XuanGuChi' in project 'XuanGuChi' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/actool --print-asset-tag-combinations --output-format xml1 /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/XuanGuChi/Assets.xcassets
+
+ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/actool --version --output-format xml1
+
+ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+Build description signature: 48a3e662aa1fdc365a922deccff997e8
+Build description path: /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XCBuildData/48a3e662aa1fdc365a922deccff997e8.xcbuilddata
+ClangStatCache /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/XuanGuChi.xcodeproj
+    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -o /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache
+
+CreateBuildDirectory /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/XuanGuChi.xcodeproj
+    builtin-create-build-directory /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products
+
+CreateBuildDirectory /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/XuanGuChi.xcodeproj
+    builtin-create-build-directory /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex
+
+CreateBuildDirectory /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/XuanGuChi.xcodeproj
+    builtin-create-build-directory /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos
+
+WriteAuxiliaryFile /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi-dc3a0f91367e321c6fb3ab727a4d65ae-VFS-iphoneos/all-product-headers.yaml
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/XuanGuChi.xcodeproj
+    write-file /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi-dc3a0f91367e321c6fb3ab727a4d65ae-VFS-iphoneos/all-product-headers.yaml
+
+CreateBuildDirectory /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/EagerLinkingTBDs/Release-iphoneos
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/XuanGuChi.xcodeproj
+    builtin-create-build-directory /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/EagerLinkingTBDs/Release-iphoneos
+
+WriteAuxiliaryFile /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi.hmap (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    write-file /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi.hmap
+
+WriteAuxiliaryFile /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi.DependencyStaticMetadataFileList (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    write-file /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi.DependencyStaticMetadataFileList
+
+WriteAuxiliaryFile /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi.DependencyMetadataFileList (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    write-file /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi.DependencyMetadataFileList
+
+WriteAuxiliaryFile /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi-project-headers.hmap (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    write-file /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi-project-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi-own-target-headers.hmap (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    write-file /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi-own-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi-generated-files.hmap (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    write-file /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi-generated-files.hmap
+
+WriteAuxiliaryFile /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi-all-target-headers.hmap (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    write-file /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi-all-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi-all-non-framework-target-headers.hmap (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    write-file /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi-all-non-framework-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi_const_extract_protocols.json (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    write-file /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi_const_extract_protocols.json
+
+WriteAuxiliaryFile /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi.SwiftFileList (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    write-file /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi.SwiftFileList
+
+WriteAuxiliaryFile /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi.SwiftConstValuesFileList (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    write-file /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi.SwiftConstValuesFileList
+
+WriteAuxiliaryFile /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi.LinkFileList (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    write-file /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi.LinkFileList
+
+WriteAuxiliaryFile /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi-OutputFileMap.json (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    write-file /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi-OutputFileMap.json
+
+MkDir /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    /bin/mkdir -p /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app
+
+MkDir /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/assetcatalog_output/unthinned (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    /bin/mkdir -p /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/assetcatalog_output/unthinned
+
+MkDir /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/assetcatalog_output/thinned (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    /bin/mkdir -p /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/assetcatalog_output/thinned
+
+GenerateAssetSymbols /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/XuanGuChi/Assets.xcassets (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/actool /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/XuanGuChi/Assets.xcassets --compile /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app --output-format human-readable-text --notices --warnings --export-dependency-info /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/assetcatalog_dependencies --output-partial-info-plist /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/assetcatalog_generated_info.plist --app-icon AppIcon --compress-pngs --enable-on-demand-resources YES --development-region zh-Hans --target-device iphone --minimum-deployment-target 15.0 --platform iphoneos --bundle-identifier com.xuanguchi.app --generate-swift-asset-symbol-extensions NO --generate-swift-asset-symbols /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/DerivedSources/GeneratedAssetSymbols.swift --generate-objc-asset-symbols /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/DerivedSources/GeneratedAssetSymbols.h --generate-asset-symbol-index /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/DerivedSources/GeneratedAssetSymbols-Index.plist
+/* com.apple.actool.compilation-results */
+/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/DerivedSources/GeneratedAssetSymbols-Index.plist
+/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/DerivedSources/GeneratedAssetSymbols.h
+/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/DerivedSources/GeneratedAssetSymbols.swift
+
+
+CpResource /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app/www /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/XuanGuChi/www (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-unsigned-binaries -strip-deterministic -strip-tool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/XuanGuChi/www /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app
+
+CompileAssetCatalogVariant thinned /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/XuanGuChi/Assets.xcassets (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/actool /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/XuanGuChi/Assets.xcassets --compile /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/assetcatalog_output/thinned --output-format human-readable-text --notices --warnings --export-dependency-info /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/assetcatalog_dependencies_thinned --output-partial-info-plist /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/assetcatalog_generated_info.plist_thinned --app-icon AppIcon --compress-pngs --enable-on-demand-resources YES --development-region zh-Hans --target-device iphone --minimum-deployment-target 15.0 --platform iphoneos
+/* com.apple.actool.compilation-results */
+/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/assetcatalog_generated_info.plist_thinned
+/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/assetcatalog_output/thinned/AppIcon60x60@2x.png
+/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/assetcatalog_output/thinned/AppIcon76x76@2x~ipad.png
+/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/assetcatalog_output/thinned/Assets.car
+
+
+SwiftDriver XuanGuChi normal arm64 com.apple.xcode.tools.swift.compiler (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    builtin-SwiftDriver -- /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name XuanGuChi -O -whole-module-optimization -enforce-exclusivity\=checked @/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi.SwiftFileList -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -target arm64-apple-ios15.0 -g -module-cache-path /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -swift-version 5 -I /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos -F /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos -c -num-threads 3 -Xcc -ivfsstatcache -Xcc /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache -output-file-map /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi-generated-files.hmap -Xcc -I/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi-own-target-headers.hmap -Xcc -I/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi-project-headers.hmap -Xcc -I/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/include -Xcc -I/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/DerivedSources/arm64 -Xcc -I/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/DerivedSources -emit-objc-header -emit-objc-header-path /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi-Swift.h -working-directory /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios -no-emit-module-separately-wmo
+
+SwiftCompile normal arm64 Compiling\ WebSchemeHandler.swift,\ WebViewController.swift,\ XuanGuChiApp.swift,\ GeneratedAssetSymbols.swift /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/XuanGuChi/WebSchemeHandler.swift /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/XuanGuChi/WebViewController.swift /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/XuanGuChi/XuanGuChiApp.swift /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'XuanGuChi' from project 'XuanGuChi')
+
+CompileSwift normal arm64 (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    
+
+SwiftDriver\ Compilation XuanGuChi normal arm64 com.apple.xcode.tools.swift.compiler (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    builtin-Swift-Compilation -- /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name XuanGuChi -O -whole-module-optimization -enforce-exclusivity\=checked @/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi.SwiftFileList -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -target arm64-apple-ios15.0 -g -module-cache-path /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -swift-version 5 -I /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos -F /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos -c -num-threads 3 -Xcc -ivfsstatcache -Xcc /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache -output-file-map /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi-generated-files.hmap -Xcc -I/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi-own-target-headers.hmap -Xcc -I/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi-project-headers.hmap -Xcc -I/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/include -Xcc -I/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/DerivedSources/arm64 -Xcc -I/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/DerivedSources -emit-objc-header -emit-objc-header-path /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi-Swift.h -working-directory /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios -no-emit-module-separately-wmo
+
+SwiftDriverJobDiscovery normal arm64 Compiling WebSchemeHandler.swift, WebViewController.swift, XuanGuChiApp.swift, GeneratedAssetSymbols.swift (in target 'XuanGuChi' from project 'XuanGuChi')
+
+SwiftDriver\ Compilation\ Requirements XuanGuChi normal arm64 com.apple.xcode.tools.swift.compiler (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    builtin-Swift-Compilation-Requirements -- /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name XuanGuChi -O -whole-module-optimization -enforce-exclusivity\=checked @/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi.SwiftFileList -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -target arm64-apple-ios15.0 -g -module-cache-path /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -swift-version 5 -I /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos -F /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos -c -num-threads 3 -Xcc -ivfsstatcache -Xcc /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache -output-file-map /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi-generated-files.hmap -Xcc -I/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi-own-target-headers.hmap -Xcc -I/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi-project-headers.hmap -Xcc -I/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/include -Xcc -I/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/DerivedSources/arm64 -Xcc -I/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/DerivedSources -emit-objc-header -emit-objc-header-path /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi-Swift.h -working-directory /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios -no-emit-module-separately-wmo
+
+SwiftMergeGeneratedHeaders /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/DerivedSources/XuanGuChi-Swift.h /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi-Swift.h (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    builtin-swiftHeaderTool -arch arm64 /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi-Swift.h -o /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/DerivedSources/XuanGuChi-Swift.h
+
+Copy /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.swiftmodule/arm64-apple-ios.swiftmodule /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi.swiftmodule (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-unsigned-binaries -strip-deterministic -strip-tool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks -rename /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi.swiftmodule /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.swiftmodule/arm64-apple-ios.swiftmodule
+
+Copy /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.swiftmodule/arm64-apple-ios.swiftdoc /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi.swiftdoc (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-unsigned-binaries -strip-deterministic -strip-tool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks -rename /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi.swiftdoc /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.swiftmodule/arm64-apple-ios.swiftdoc
+
+Copy /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.swiftmodule/arm64-apple-ios.abi.json /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi.abi.json (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-unsigned-binaries -strip-deterministic -strip-tool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks -rename /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi.abi.json /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.swiftmodule/arm64-apple-ios.abi.json
+
+Copy /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi.swiftsourceinfo (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-unsigned-binaries -strip-deterministic -strip-tool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks -rename /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi.swiftsourceinfo /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo
+
+Ld /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app/XuanGuChi normal (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios15.0 -isysroot /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -Os -L/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/EagerLinkingTBDs/Release-iphoneos -L/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos -F/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/EagerLinkingTBDs/Release-iphoneos -F/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos -filelist /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi.LinkFileList -dead_strip -Xlinker -object_path_lto -Xlinker /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi_lto.o -Xlinker -dependency_info -Xlinker /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi.swiftmodule -o /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app/XuanGuChi
+
+LinkAssetCatalog /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/XuanGuChi/Assets.xcassets (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    builtin-linkAssetCatalog --thinned /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/assetcatalog_output/thinned --thinned-dependencies /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/assetcatalog_dependencies_thinned --thinned-info-plist-content /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/assetcatalog_generated_info.plist_thinned --unthinned /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/assetcatalog_output/unthinned --unthinned-dependencies /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/assetcatalog_dependencies_unthinned --unthinned-info-plist-content /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/assetcatalog_generated_info.plist_unthinned --output /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app --plist-output /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/assetcatalog_generated_info.plist
+note: Emplaced /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app/AppIcon60x60@2x.png (in target 'XuanGuChi' from project 'XuanGuChi')
+note: Emplaced /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app/Assets.car (in target 'XuanGuChi' from project 'XuanGuChi')
+note: Emplaced /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app/AppIcon76x76@2x~ipad.png (in target 'XuanGuChi' from project 'XuanGuChi')
+
+ProcessInfoPlistFile /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app/Info.plist /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/XuanGuChi/Info.plist (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    builtin-infoPlistUtility /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/XuanGuChi/Info.plist -producttype com.apple.product-type.application -genpkginfo /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app/PkgInfo -expandbuildsettings -format binary -platform iphoneos -additionalcontentfile /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/assetcatalog_generated_info.plist -requiredArchitecture arm64 -o /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app/Info.plist
+
+ExtractAppIntentsMetadata (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name XuanGuChi --sdk-root /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk --xcode-version 16F6 --platform-family iOS --deployment-target 15.0 --bundle-identifier com.xuanguchi.app --output /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app --target-triple arm64-apple-ios15.0 --binary-file /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app/XuanGuChi --dependency-file /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi_dependency_info.dat --stringsdata-file /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi.SwiftFileList --metadata-file-list /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi.DependencyMetadataFileList --static-metadata-file-list /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi.DependencyStaticMetadataFileList --swift-const-vals-list /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/Objects-normal/arm64/XuanGuChi.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --validate-assistant-intents --no-app-shortcuts-localization
+2026-11-09 13:22:28.238 appintentsmetadataprocessor[2228:9659] Starting appintentsmetadataprocessor export
+2026-11-09 13:22:28.246 appintentsmetadataprocessor[2228:9659] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
+
+CopySwiftLibs /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    builtin-swiftStdLibTool --copy --verbose --scan-executable /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app/XuanGuChi --scan-folder /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app/Frameworks --scan-folder /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app/PlugIns --scan-folder /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app/SystemExtensions --scan-folder /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app/Extensions --platform iphoneos --toolchain /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app/Frameworks --strip-bitcode --strip-bitcode-tool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
+Ignoring --strip-bitcode because --sign was not passed
+
+GenerateDSYMFile /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app.dSYM /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app/XuanGuChi (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app/XuanGuChi -o /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app.dSYM
+
+AppIntentsSSUTraining (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsnltrainingprocessor --infoplist-path /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app/Info.plist --temp-dir-path /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/ssu --bundle-id com.xuanguchi.app --product-path /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app --extracted-metadata-path /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app/Metadata.appintents --metadata-file-list /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Intermediates.noindex/XuanGuChi.build/Release-iphoneos/XuanGuChi.build/XuanGuChi.DependencyMetadataFileList --archive-ssu-assets
+2026-11-09 13:22:28.307 appintentsnltrainingprocessor[2252:9717] Parsing options for appintentsnltrainingprocessor
+2026-11-09 13:22:28.308 appintentsnltrainingprocessor[2252:9717] No AppShortcuts found - Skipping.
+
+RegisterExecutionPolicyException /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    builtin-RegisterExecutionPolicyException /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app
+
+Validate /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    builtin-validationUtility /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app -validate-for-store -infoplist-subpath Info.plist
+
+Touch /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app (in target 'XuanGuChi' from project 'XuanGuChi')
+    cd /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios
+    /usr/bin/touch -c /Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/UnsignedDerivedData/Build/Products/Release-iphoneos/XuanGuChi.app
+
+note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'XuanGuChi' from project 'XuanGuChi')
+** BUILD SUCCEEDED **
+
+==> 2/4 打包成标准 Payload 结构
+==> 3/4 校验产物
+    可执行文件：Mach-O 64-bit executable arm64
+    Bundle ID   ：com.xuanguchi.app
+    显示名      ：竞价选股池
+    版本        ：1.0.0 (1)
+    最低 iOS    ：15.0
+    包大小      ：168K
+✅ 未签名 IPA：/Users/runner/work/XuanGuChi-iOS/XuanGuChi-iOS/ios/build/export/XuanGuChi-unsigned.ipa
